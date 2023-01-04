@@ -3,6 +3,11 @@ pipeline {
 
     stages {
         stage('Build') {
+            when {
+                expression {
+                    BRANCH_NAME == 'dev'
+                }
+            }
             steps {
                 echo 'Building app'
             }
