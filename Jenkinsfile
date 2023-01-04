@@ -3,16 +3,16 @@ pipeline {
 
     stages {
         stage('Build') {
-            when {
-                expression {
-                    BRANCH_NAME == 'dev'
-                }
-            }
             steps {
                 echo 'Building app'
             }
         }
         stage('Test') {
+            when {
+                expression {
+                    BRANCH_NAME == 'dev'
+                }
+            }
             steps {
                 echo 'Testing app'
             }
