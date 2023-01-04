@@ -1,14 +1,14 @@
 pipeline {
     agent any
-    environment {
-        name = BRANCH_NAME
-    }
 
     stages {
         stage('Build') {
+            when {
+                expression {
+                    BRANCH_NAME == "dev"
+                }
             steps {
                 echo 'Building application'
-                echo "the branch name is ${name}"
             }
         }
         stage('Test') {
