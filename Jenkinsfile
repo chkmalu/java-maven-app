@@ -3,6 +3,7 @@ pipeline {
     environment {
         VERSION = '1.2'
         MODEL = '250'
+        CRED = credentials('Nexus-pass')
     }
 
     stages {
@@ -17,6 +18,7 @@ pipeline {
                 echo 'Testing app'
                 echo "the version is ${VERSION}"
                 echo "the model is ${MODEL}"
+                echo "the cred is ${CRED}"
             }
         }
         stage('Deploy') {
