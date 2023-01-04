@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         VERSION = '1.2'
+        MODEL = '250'
     }
 
     stages {
@@ -15,6 +16,7 @@ pipeline {
             steps {
                 echo 'Testing app'
                 echo "the version is ${VERSION}"
+                echo "the model is ${MODEL}"
             }
         }
         stage('Deploy') {
