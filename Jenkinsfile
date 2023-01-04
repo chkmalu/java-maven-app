@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environments {
+    environment {
         name = BRANCH_NAME
     }
 
