@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             when {
                 expression {
-                    BRANCH_NAME == "dev"
+                    BRANCH_NAME == 'dev'
                 }
             steps {
                 echo 'Building application'
