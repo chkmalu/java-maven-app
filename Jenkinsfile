@@ -16,13 +16,14 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', \
                                              usernameVariable: 'USERNAME', \
                                              passwordVariable: 'PASSWORD')]) {
-                                                sh "echo ${USERNAME}"
+                                                sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                                                sh "docker tag mvapp1.1 chikamalu/mvapp:1.1"
                                              }
         }
     }
-        stage('Deploy') {
+        stage('Deploy to DockerHub') {
             steps {
-                echo 'Deploying app'
+                sh "docker push chikamalu/mvapp:1.1"
             }
         }
     }
