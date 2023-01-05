@@ -1,15 +1,13 @@
 pipeline {
     agent any
-    environment {
-        VERSION = '1.2'
-        MODEL = '250'
-        CRED = credentials('Nexus-pass')
+    tools {
+        mavin 'maven 3.8'
     }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building app'
+                sh 'package'
             }
         }
         stage('Test') {
