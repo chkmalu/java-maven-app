@@ -19,11 +19,11 @@ pipeline {
                                                 sh "echo ${USERNAME}"
                                              }
         }
+    }
         stage('Deploy') {
             steps {
                 echo 'Deploying app'
             }
         }
     }
-}
 }
