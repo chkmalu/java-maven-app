@@ -19,7 +19,7 @@ pipeline {
     }
         stage('Deploy to image') {
             steps {
-                sh "081241791096.dkr.ecr.us-east-1.amazonaws.com/mvapp:1.1"
+                sh "docker push 081241791096.dkr.ecr.us-east-1.amazonaws.com/mvapp:1.1"
             }
         }
     }
