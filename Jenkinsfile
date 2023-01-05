@@ -1,23 +1,23 @@
 pipeline {
     agent any
     tools {
-        maven "maven 3.8"
+        mavin 'maven 3.8'
     }
 
     stages {
-        stage('Build') {
+        stage('Build jarfile') {
             steps {
                 sh 'mvn package'
             }
         }
-        stage('Test') {
-
+        stage('Build image') {
             steps {
-                echo 'Testing app'
-                echo "the version is ${VERSION}"
-                echo "the model is ${MODEL}"
-                echo "the cred is ${CRED}"
-            }
+                sh 'docker build -t mvapp:1.1 .'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', \
+                                             usernameVariable: 'USERNAME', \
+                                             passwordVariable: 'PASSWORD')]) {
+                                                sh "echo ${USERNAME}"
+                                             }
         }
         stage('Deploy') {
             steps {
