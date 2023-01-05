@@ -13,10 +13,10 @@ pipeline {
         stage('Build image') {
             steps {
                 sh 'docker build -t mvapp:1.1 .'
-                withCredentials(bindings: [usernamePassword(credentialsId: 'docker-hub-pass', \
+                withCredentials(bindings: [usernamePassword(credentialsId: 'Nexus-pass', \
                                              usernameVariable: 'USERNAME', \
                                              passwordVariable: 'PASSWORD')]) {
-                                                sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                                                sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin 44.200.156.114:8081"
                                                 sh "docker tag mvapp:1.1 chikamalu/mvapp:1.1"
                                              }
         }
