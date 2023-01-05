@@ -13,17 +13,13 @@ pipeline {
         stage('Build image') {
             steps {
                 sh 'docker build -t mvapp:1.1 .'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', \
-                                             usernameVariable: 'USERNAME', \
-                                             passwordVariable: 'PASSWORD')]) {
-                                                sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                                                sh "docker tag mvapp:1.1 44.200.156.114:8083/mvapp:1.1"
-                                             }
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 081241791096.dkr.ecr.us-east-1.amazonaws.com"
+                sh "docker tag mvapp:1.1 081241791096.dkr.ecr.us-east-1.amazonaws.com/mvapp:1.1"
         }
     }
         stage('Deploy to image') {
             steps {
-                sh "docker push 44.200.156.114:8083/mvapp:1.1"
+                sh "081241791096.dkr.ecr.us-east-1.amazonaws.com/mvapp:1.1"
             }
         }
     }
