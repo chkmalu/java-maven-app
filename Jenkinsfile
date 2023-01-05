@@ -17,7 +17,7 @@ pipeline {
                                              usernameVariable: 'USERNAME', \
                                              passwordVariable: 'PASSWORD')]) {
                                                 sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                                                sh "docker tag mvapp1.1 chikamalu/mvapp:1.1"
+                                                sh "docker tag mvapp:1.1 chikamalu/mvapp:1.1"
                                              }
         }
     }
