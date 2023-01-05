@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             when {
                 expression {
-                    BRANCH_NAME == 'myjenkins-jobs'
+                    BRANCH_NAME == 'myjenkins-jobs' && 'feature/payment'
                 }
             }
             steps {
