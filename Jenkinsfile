@@ -13,7 +13,7 @@ pipeline {
         stage('Build image') {
             steps {
                 sh 'docker build -t mvapp:1.1 .'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', \
+                withCredentials(bindings: [usernamePassword(credentialsId: 'docker-hub-pass', \
                                              usernameVariable: 'USERNAME', \
                                              passwordVariable: 'PASSWORD')]) {
                                                 sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
