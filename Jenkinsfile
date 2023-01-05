@@ -16,7 +16,7 @@ pipeline {
                 withCredentials(bindings: [usernamePassword(credentialsId: 'Nexus-pass', \
                                              usernameVariable: 'USERNAME', \
                                              passwordVariable: 'PASSWORD')]) {
-                                                sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin 44.200.156.114:8081"
+                                                sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin 44.200.156.114:8083"
                                                 sh "docker tag mvapp:1.1 chikamalu/mvapp:1.1"
                                              }
         }
