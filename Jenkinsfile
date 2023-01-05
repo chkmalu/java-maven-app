@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        mavin 'maven 3.8'
+        mavin "maven 3.8"
     }
 
     stages {
         stage('Build') {
             steps {
-                sh 'package'
+                sh 'mvn package'
             }
         }
         stage('Test') {
