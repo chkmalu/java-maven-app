@@ -10,9 +10,7 @@ pipeline {
         stage('Build jarfile') {
             steps {
                 echo 'Building jarfile'
-                script{
-                    buildjar()
-                }
+                buildjar()
             }
         }
         stage('Build') {
