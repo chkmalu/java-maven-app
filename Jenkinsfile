@@ -1,20 +1,19 @@
+@Library('jenkins-lib')_
+
 pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Build jarfile') {
             steps {
-                echo 'Testing app'
+                echo 'Building jarfile'
+                buidjar()
             }
         }
         stage('Build') {
-            when {
-                expression {
-                    BRANCH_NAME == 'myjenkins-jobs'
-                }
-            }
             steps {
                 echo 'Building app'
+                buidimage()
             }
         }
         stage('Deploy') {
