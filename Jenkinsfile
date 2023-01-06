@@ -7,13 +7,17 @@ pipeline {
         stage('Build jarfile') {
             steps {
                 echo 'Building jarfile'
-                buidjar()
+                script{
+                    buidjar()
+                }
             }
         }
         stage('Build') {
             steps {
                 echo 'Building app'
-                buidimage()
+                script{
+                    buidimage()
+                }
             }
         }
         stage('Deploy') {
