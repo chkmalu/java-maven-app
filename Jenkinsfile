@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Building jarfile'
                 script{
-                    buildjar('jmvapp:2.1 chikamalu/jvmapp:2.1')
+                    buildjar()
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo 'Building app'
                 script{
-                    buildimage()
+                    buildimage('jmvapp:2.1 chikamalu/jvmapp:2.1')
                 }
             }
         }
