@@ -8,7 +8,7 @@ pipeline {
             steps {
                 echo 'Building jarfile'
                 script{
-                    buidjar()
+                    buildjar()
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'Building app'
                 script{
-                    buidimage()
+                    buildimage()
                 }
             }
         }
