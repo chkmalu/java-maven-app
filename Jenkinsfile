@@ -41,5 +41,12 @@ pipeline {
                 echo 'Deploying app'
             }
         }
+        stage('commit version') {
+            steps {
+                script{
+                    updateversion()
+                }
+            }
+        }
     }
 }
