@@ -32,7 +32,7 @@ pipeline {
             steps {
                 echo 'Building app'
                 script{
-                    buildimage("jmvapp:2.1 chikamalu/jvmapp:${IMAGE_NAME}")
+                    buildimage("chikamalu/jvmapp:${IMAGE_NAME}")
                 }
             }
         }
