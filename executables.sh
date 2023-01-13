@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export IMAGETAG = $1 
+#export IMAGETAG = $1 
 
 docker-compose -f composefile.yml up --detach
 
-echo $IMAGETAG
+#echo $IMAGETAG
