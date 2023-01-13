@@ -53,7 +53,7 @@ pipeline {
         stage('commit version') {
             steps {
                 script{
-                    versionupdate.groovy()
+                    versionupdate.groovy(BRANCH_NAME)
                 }
             }
         }
