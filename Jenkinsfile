@@ -38,7 +38,15 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying app'
+                script{
+                    echo 'Deploying app'
+                    def ShellCmd = 'bash ./executables.sh'
+                    sshagent(['Appserver-ssh-key']) {
+                        sh 'scp executables.sh jsapp@52.207.189.206:/home/jsapp'
+                        sh 'scp composefile.yml jsapp@52.207.189.206:/home/jsapp'
+                        sh "ssh -o StrictHostKeyCheckng=no jsapp@52.207.189.206 ${ShellCmd}"
+                    }
+                }
             }
         }
         stage('commit version') {

@@ -1,0 +1,12 @@
+version: '3'
+services:
+    java-maven-app:
+        image: chikamalu/jvmapp:2.1
+        ports:
+            - 8080:8080
+    postgres-db:
+        image: postgres:15
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_PASSWORD: password
