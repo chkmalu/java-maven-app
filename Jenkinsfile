@@ -43,8 +43,8 @@ pipeline {
                     def AppServer = '3.86.13.10'
                     def ShellCmd = "bash ./executables.sh ${IMAGE_NAME}"
                     sshagent(['Appserver-ssh-key']) {
-                        sh "scp executables.sh jsapp@${AppServer}:/home/jsapp/"
-                        sh "scp composefile.yml jsapp@${AppServer}:/home/jsapp/"
+                        sh "scp -o StrictHostKeyCheckng=no executables.sh jsapp@${AppServer}:/home/jsapp/"
+                        sh "scp -o StrictHostKeyCheckng=no composefile.yml jsapp@${AppServer}:/home/jsapp/"
                         sh "ssh -o StrictHostKeyCheckng=no jsapp@52.207.189.206 ${ShellCmd}"
                     }
                 }
