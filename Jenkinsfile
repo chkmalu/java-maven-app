@@ -53,7 +53,7 @@ pipeline {
         stage('commit version') {
             steps {
                 script{
-                    versionupdate(${BRANCH_NAME})
+                    versionupdate(BRANCH_NAME)
                 }
             }
         }
