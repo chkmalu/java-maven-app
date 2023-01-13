@@ -40,10 +40,11 @@ pipeline {
             steps {
                 script{
                     echo 'Deploying app'
-                    def ShellCmd = 'bash ./executables.sh'
+                    def AppServer = '3.86.13.10'
+                    def ShellCmd = "bash ./executables.sh ${IMAGE_NAME}"
                     sshagent(['Appserver-ssh-key']) {
-                        sh 'scp executables.sh jsapp@52.207.189.206:/home/jsapp'
-                        sh 'scp composefile.yml jsapp@52.207.189.206:/home/jsapp'
+                        sh "scp executables.sh jsapp@${AppServer}:/home/jsapp"
+                        sh "scp composefile.yml jsapp@${AppServer}:/home/jsapp"
                         sh "ssh -o StrictHostKeyCheckng=no jsapp@52.207.189.206 ${ShellCmd}"
                     }
                 }
