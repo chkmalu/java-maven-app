@@ -53,10 +53,8 @@ pipeline {
         stage('commit version') {
             steps {
                 script{
-                    sh 'git add .'
-                    sh 'git commit -m "ci: version bump"'
-                    sh "git push origin HEAD:BRANCH_NAME"
-
+                    versionupdate.groovy("$BRANCH_NAME")
+                }
             }
         }
     }
