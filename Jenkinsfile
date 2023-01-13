@@ -45,7 +45,7 @@ pipeline {
                     sshagent(['Appserver-ssh-key']) {
                         sh "scp -o StrictHostKeyChecking=no executables.sh jsapp@${AppServer}:/home/jsapp/"
                         sh "scp -o StrictHostKeyChecking=no composefile.yml jsapp@${AppServer}:/home/jsapp/"
-                        sh "ssh -o StrictHostKeyCheckng=no jsapp@52.207.189.206 ${ShellCmd}"
+                        sh "ssh -o StrictHostKeyCheckng=no jsapp@${AppServer} ${ShellCmd}"
                     }
                 }
             }
