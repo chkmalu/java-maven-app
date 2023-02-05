@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying app'
-                sh 'kubectl create deployment ngx --image=nginx'
+                sh 'kubectl version --short --client'
             }
         }
     }
