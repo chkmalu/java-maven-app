@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying app'
-                sh 'aws'
+                sh 'aws --version'
             }
         }
     }
