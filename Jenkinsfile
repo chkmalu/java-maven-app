@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying app'
-                sh 'kubectl version --short --client'
+                sh 'docker -v'
             }
         }
     }
