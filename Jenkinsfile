@@ -4,7 +4,6 @@ pipeline {
     agent any
     tools {
         maven 'maven 3.8'
-        kubectl 'kubectl'
     }
 
     stages {
@@ -25,7 +24,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying app'
-                sh 'kubectl help'
+                sh 'aws'
             }
         }
     }
