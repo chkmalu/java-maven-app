@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying app'
-                sh '/var/jenkins_home/bin/kubectl version'
+                sh '/var/jenkins_home/bin/kubectl help'
             }
         }
     }
