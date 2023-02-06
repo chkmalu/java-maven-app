@@ -18,10 +18,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            environment {
-                AWS_ACCESS_KEY_ID = credentials('AWS_Access_key_ID')
-                AWS_SECRET_ACCESS_KEY = credentials('AWS_Secret_access_key')
-            }
             steps {
                 echo 'Deploying app'
                 sh '/var/jenkins_home/bin/kubectl create deployment ngx --image=nginx'
