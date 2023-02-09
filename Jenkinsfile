@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    tool name: 'maven 3.8' 
-    type: 'maven'
+    tool name 'maven 3.8' 
+    type 'maven'
 
     stages {
         stage('Testing') {
