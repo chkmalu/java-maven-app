@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo 'Deploying app'
                 withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://0F582A7761707E7224F383C9297DDE6E.gr7.us-east-1.eks.amazonaws.com']) {
-                sh 'kubectl apply -f my-kubernetes-directory'
+                  sh 'kubectl apply -f my-kubernetes-directory'
             }
         }
     }
