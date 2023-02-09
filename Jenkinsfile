@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('version incremental.') {
+        stage('Version Incremental.') {
             steps {
                 script {
                     echo 'incrementing app version...'
@@ -18,13 +18,21 @@ pipeline {
                 }
             }
         }
-        stage('Building') {
+        stage('Build Jarfile') {
             steps {
-                echo 'Building App'
+                echo 'Building Jarfile'
                 script{
                     sh'mvn clean package'
                 }
             }
+        }
+        stage('Build Image') {
+            steps {
+                echo 'Building App'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    sh "echo ${USERNAME}"
+                    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin" 
+         }
         }
         stage('Deploying') {
             steps {
