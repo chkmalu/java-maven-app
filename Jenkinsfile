@@ -1,29 +1,21 @@
-@Library('jenkins-shares-library')_
-
 pipeline {
     agent any
-    tools {
-        maven 'maven 3.8'
-    }
 
     stages {
-        stage('test App') {
+        stage('Testing') {
             steps {
-                echo 'Testing App'
+                echo 'testing App'
             }
         }
-        stage('Build') {
+        stage('Building') {
             steps {
-                echo 'Building app'
+                echo 'Building App'
             }
         }
-        stage('Deploy') {
+        stage('Deploying') {
             steps {
-                echo 'Deploying app'
-                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://C393D68EEF0CD7A027CA46A2F6A76DA6.gr7.us-east-1.eks.amazonaws.com']) {
-                  sh '/var/jenkins_home/bin/kubectl create deployment ngx --image=nginx'
+                echo 'Deploying App'
             }
         }
     }
-  }
 }
