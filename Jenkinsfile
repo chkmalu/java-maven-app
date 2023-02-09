@@ -28,10 +28,12 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                echo 'Building App'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh "echo ${USERNAME}"
-                    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin" 
+                script{
+                    echo 'Building App'
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh "echo ${USERNAME}"
+                        sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                } 
          }
         }
         stage('Deploying') {
