@@ -33,14 +33,14 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh "echo ${USERNAME}"
                         sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                } 
-         }
-        }
+                   }
+                }
+            }
+           }
         stage('Deploying') {
             steps {
                 echo 'Deploying App'
             }
         }
     }
-}
 }
