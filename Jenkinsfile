@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         IMAGE_NAME = 'chikamalu/jvmapp'
-
+        KUBECTL = '/var/jenkins_home/kubectl'
     }
 
     stages {
@@ -46,6 +46,7 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo 'Deploying App'
+                sh "envsubst < k8files/jvmaapp-deployment.yaml | ${KUBECTL} apply -f -"
             }
         }
     }
