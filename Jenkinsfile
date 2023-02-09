@@ -7,9 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('Build jarfile') {
+        stage('test App') {
             steps {
-                echo 'Building jarfile'
+                echo 'Testing App'
             }
         }
         stage('Build') {
@@ -20,8 +20,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying app'
-                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://0F582A7761707E7224F383C9297DDE6E.gr7.us-east-1.eks.amazonaws.com']) {
-                  sh 'kubectl apply -f my-kubernetes-directory'
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://C393D68EEF0CD7A027CA46A2F6A76DA6.gr7.us-east-1.eks.amazonaws.com']) {
+                  sh 'kubectl create deployment ngx --image=nginx'
             }
         }
     }
