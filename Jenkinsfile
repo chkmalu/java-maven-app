@@ -3,6 +3,10 @@ pipeline {
     tools {
         maven 'maven 3.8'
     }
+    environment {
+        IMAGE_NAME = 'chikamalu/jvmapp'
+
+    }
 
     stages {
         stage('Version Incremental.') {
@@ -14,7 +18,7 @@ pipeline {
                         versions:commit'
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
                     def version = matcher[0][1]
-                    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+                    env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                 }
             }
         }
@@ -31,8 +35,10 @@ pipeline {
                 script{
                     echo 'Building App'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        sh "echo ${USERNAME}"
                         sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                        sh "docker build tag ${IMAGE_NAME}:${IMAGE_TAG} ."
+                        sh "docker -t ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:${IMAGE_TAG}"
+                        sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
                    }
                 }
             }
