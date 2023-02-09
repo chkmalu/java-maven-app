@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: $IMAGE_NAME-deployment
+  name: jvmapp-deployment
   labels:
-    app: $IMAGE_NAME
+    app: jvmapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: $IMAGE_NAME
+      app: jvmapp
   template:
     metadata:
       labels:
-        app: $IMAGE_NAME
+        app: jvmapp
     spec:
       containers:
-      - name: $IMAGE_NAME
+      - name: jvmapp
         image: chikamalu/jvmapp:1.1.14-17
         ports:
         - containerPort: 8080
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: $IMAGE_NAME
+  name: jvmapp
 spec:
   selector:
-    app: $IMAGE_NAME
+    app: jvmapp
   ports:
     - protocol: TCP
       port: 8080
