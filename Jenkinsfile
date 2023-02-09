@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         IMAGE_NAME = 'chikamalu/jvmapp'
-        KUBECTL = '/var/jenkins_home/kubectl'
+        KUBECTL = '/var/jenkins_home/bin/kubectl'
     }
 
     stages {
