@@ -15,7 +15,7 @@ spec:
         app: ${IMAGE_NAME}
     spec:
       imagePullSecrets:
-      - name: docker-cred
+      - name: aws-docker-cred
       containers:
       - name: ${IMAGE_NAME}
         image: chikamalu/${IMAGE_NAME}:${IMAGE_TAG}
