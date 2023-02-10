@@ -4,7 +4,7 @@ pipeline {
         maven 'maven 3.8'
     }
     environment {
-        REPO_NAME = 'chikamalu/'
+        REPO_NAME = '081241791096.dkr.ecr.us-east-1.amazonaws.com/'
         IMAGE_NAME = 'jvmapp'
         KUBECTL = '/var/jenkins_home/bin/kubectl'
     }
