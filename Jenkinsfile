@@ -4,7 +4,7 @@ pipeline {
         maven 'maven 3.8'
     }
     environment {
-        IMAGE_NAME = 'chikamalu/jvmapp'
+        IMAGE_NAME = 'jvmapp'
         KUBECTL = '/var/jenkins_home/bin/kubectl'
     }
 
