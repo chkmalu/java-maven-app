@@ -52,7 +52,7 @@ pipeline {
         }
         stage('Commit Version Update') {
             steps {
-                echo BRANCH_NAME = "${env.BRANCH_NAME}"
+                echo BUILD_NUMBER = "${env.BUILD_NUMBER}"
                 // echo 'Updating Version'
                 // sh 'git add .'
                 // sh "git commit -m 'version update'"
