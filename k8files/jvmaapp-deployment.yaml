@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ${IMAGE_NAME}
-        image: chikamalu/${IMAGE_NAME}:${IMAGE_TAG}
+        image: ${IMAGE_NAME}:${IMAGE_TAG}
         ports:
         - containerPort: 8080
 ---
