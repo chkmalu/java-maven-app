@@ -50,5 +50,13 @@ pipeline {
                 sh "envsubst < k8files/jvmaapp-deployment.yaml | ${KUBECTL} apply -f -"
             }
         }
+        stage('Commit Version Update') {
+            steps {
+                echo 'Updating Version'
+                sh 'git add .'
+                sh "git commit -m 'version update'"
+                sh 'git push origi'
+            }
+        }
     }
 }
