@@ -47,11 +47,12 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo 'Deploying App'
-                sh "envsubst < k8files/jvmaapp-deployment.yaml | ${KUBECTL} apply -f -"
+                sh "envsubst < k8files/jvmaapp-deployment.yaml | cat -"
             }
         }
         stage('Commit Version Update') {
             steps {
+                echo "current $BRANCH_NAME"
                 echo 'Updating Version'
                 sh 'git add .'
                 sh "git commit -m 'version update'"
