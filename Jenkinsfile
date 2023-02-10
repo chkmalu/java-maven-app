@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo 'Deploying App'
                 sh "envsubst < k8files/jvmaapp-deployment.yaml > jvmapp.yaml"
-                sh "${KUBECTL} apply -f jvmapp.yaml"
+                sh "cat jvmapp.yaml"
             }
         }
     }
