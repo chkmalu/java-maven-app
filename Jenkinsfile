@@ -55,7 +55,7 @@ pipeline {
                 echo 'Updating Version'
                 sh 'git add .'
                 sh "git commit -m 'version update'"
-                sh 'git push origi'
+                sh "git push origin HEAD:${BRANCH_NAME}"
             }
         }
     }
