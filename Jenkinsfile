@@ -52,11 +52,12 @@ pipeline {
         }
         stage('Commit Version Update') {
             steps {
-                echo "current $BRANCH_NAME"
-                echo 'Updating Version'
-                sh 'git add .'
-                sh "git commit -m 'version update'"
-                sh "git push origin HEAD:$BRANCH_NAME"
+                env.branchname = "$BRANCH_NAME"
+                echo "current $branchname"
+                // echo 'Updating Version'
+                // sh 'git add .'
+                // sh "git commit -m 'version update'"
+                // sh "git push origin HEAD:$BRANCH_NAME"
             }
         }
     }
