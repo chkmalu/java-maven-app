@@ -18,7 +18,7 @@ spec:
       - name: aws-docker-cred
       containers:
       - name: ${IMAGE_NAME}
-        image: chikamalu/${IMAGE_NAME}:${IMAGE_TAG}
+        image: ${REPO_NAME}/${IMAGE_NAME}:${IMAGE_TAG}
         ports:
         - containerPort: 8080
 ---
