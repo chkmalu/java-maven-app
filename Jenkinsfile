@@ -4,6 +4,7 @@ pipeline {
         maven 'maven 3.8'
     }
     environment {
+        REPO_NAME = 'chikamalu/'
         IMAGE_NAME = 'jvmapp'
         KUBECTL = '/var/jenkins_home/bin/kubectl'
     }
@@ -36,9 +37,9 @@ pipeline {
                     echo 'Building App'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                        sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
-                        sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:${IMAGE_TAG}"
-                        sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                        sh "docker build -t ${REPO_NAME}${IMAGE_NAME}:${IMAGE_TAG} ."
+                        sh "docker tag ${REPO_NAME}${IMAGE_NAME}:${IMAGE_TAG} ${REPO_NAME}${IMAGE_NAME}:${IMAGE_TAG}"
+                        sh "docker push ${REPO_NAME}${IMAGE_NAME}:${IMAGE_TAG}"
                    }
                 }
             }
