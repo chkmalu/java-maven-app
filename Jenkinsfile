@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    tool name: 'maven', type: 'maven'
+    tools {
+        terraform 'terraform'
+    }
 
     stages {
         stage('Test') {
