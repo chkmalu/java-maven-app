@@ -23,7 +23,6 @@ module "webserver_mod" {
   vpc_id = aws_vpc.myapp-vpc.id
   tag_name = var.tag_name
   subnet_id = module.subnet_mod.subnet_blk.id
-  key_path = var.key_path
   image_name = var.image_name
 }
 
