@@ -47,7 +47,7 @@ resource "aws_instance" "TF-server" {
   security_groups = [aws_default_security_group.dev-sg.id]
   associate_public_ip_address = true
   key_name ="myapp_server_key"
-  user_data = file("deployment_script.sh")
+  user_data = file("setup_script.sh")
   root_block_device {
     volume_type = "gp2"
   volume_size = "20"
