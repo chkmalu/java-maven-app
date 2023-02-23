@@ -1,6 +1,6 @@
 .idea/*
 target
 .vscode/*
-.terraform/*
+terraform/.terraform/*
 *.tfstate
 *.tfstate.*
