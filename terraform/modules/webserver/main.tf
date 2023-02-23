@@ -46,7 +46,7 @@ resource "aws_instance" "TF-server" {
   subnet_id = var.subnet_id
   security_groups = [aws_default_security_group.dev-sg.id]
   associate_public_ip_address = true
-  key_name = aws_key_pair.dev_kp.key_name
+  key_name ="myapp_server_key"
   root_block_device {
     volume_type = "gp2"
   volume_size = "20"
@@ -55,9 +55,4 @@ resource "aws_instance" "TF-server" {
   tags = {
     Name = "${var.tag_name}-instance"
   }
-}
-
-resource "aws_key_pair" "dev_kp" {
-  key_name = "dev_kp"
-  public_key = file(var.key_path)
 }

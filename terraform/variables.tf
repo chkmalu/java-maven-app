@@ -7,7 +7,4 @@ variable "cidr_subnet" {
 variable "tag_name" {
   description = "prefix name" 
 }
-variable "key_path" {
-  description = "key_path"  
-}
 variable "image_name" {}
