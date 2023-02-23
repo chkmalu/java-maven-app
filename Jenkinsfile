@@ -44,6 +44,7 @@ pipeline {
                 echo 'Deploying app'
                 dir('terraform') {
                     sh 'terraform init'
+                    sh 'terraform apply -auto-approve'
                 }
             }
         }
