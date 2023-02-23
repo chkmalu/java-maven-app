@@ -28,12 +28,12 @@ pipeline {
             }
         }
         stage('Provsion Infra.') {
-            steps {
-                echo 'Provisioning Infra.'
-                environment {
+            environment {
                 access_key = credentials('access_key')
                 secret_key = credentials('secret_key')
                 }
+            steps {
+                echo 'Provisioning Infra.'
                 dir('terraform') {
                     sh 'terraform init'
                     sh 'terraform plan'
