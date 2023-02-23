@@ -29,17 +29,15 @@ pipeline {
         }
         stage('Provsion Infra.') {
             steps {
-                withCredentials([string(credentialsId: 'ACCESS_KEY_ID', variable: 'access_key'), string(credentialsId: 'SECRET_KEY_ID', variable: 'secret_key')]) {
-                    echo 'Provisioning Infra.'
-                    environment {
-                    access_key = "${access_key}"
-                    secret_key = "${secret_key}"
-                    }
-                    dir('terraform') {
-                        sh 'terraform init'
-                        sh 'terraform plan'
+                echo 'Provisioning Infra.'
+                environment {
+                access_key = credentials('access_key')
+                secret_key = credentials('secret_key')
                 }
-            }
+                dir('terraform') {
+                    sh 'terraform init'
+                    sh 'terraform plan'
+                }
             }
         }
         stage('Deploy') {
