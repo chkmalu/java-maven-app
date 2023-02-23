@@ -51,7 +51,7 @@ resource "aws_instance" "TF-server" {
     volume_type = "gp2"
   volume_size = "20"
   }
-  user_data = file("./deployment_script.sh")
+  # user_data = file("./deployment_script.sh")
   tags = {
     Name = "${var.tag_name}-instance"
   }
