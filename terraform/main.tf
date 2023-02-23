@@ -1,4 +1,4 @@
-provider "aws" {region = "us-east-1"}
+provider "aws" {}
 
 #create vpc 
 resource "aws_vpc" "myapp-vpc" {
