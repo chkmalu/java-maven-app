@@ -30,9 +30,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying app'
-                dir('terraform')
-                sh 'terraform init'
-            }
+                dir('terraform') {
+                    sh 'terraform init'
+                }
         }
     }
 }
