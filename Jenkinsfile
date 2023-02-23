@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying app'
-                    sleep(90, unit: 'SECONDS')
+                    sleep(120, unit: 'SECONDS')
                     sshagent(['ec2-user-Key']) {
                         sh "scp StrictHostKeyChecking=no compose ec2-user@${pub_ip}:/home/ec2-user"
                         sh "scp StrictHostKeyChecking=no deploment_script.sh ec2-user@${pub_ip}:/home/ec2-user"
