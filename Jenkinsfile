@@ -31,9 +31,9 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'ACCESS_KEY_ID', variable: 'access_key'), string(credentialsId: 'SECRET_KEY_ID', variable: 'secret_key')]) {
                     echo 'Provisioning Infra.'
-                dir('terraform') {
-                    sh 'terraform init'
-                    sh 'terraform plan'
+                    dir('terraform') {
+                        sh 'terraform init'
+                        sh 'terraform plan'
                 }
             }
             }
