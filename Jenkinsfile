@@ -46,9 +46,9 @@ pipeline {
                     echo ${pub_ip}
                     sleep(90, unit: 'SECONDS')
                     sshagent(['ec2-user-Key']) {
-                        sh "scp StrictHostKeyChecking=no compose ec2-user@${pub_ip}:/home/ec2-user"
-                        sh "scp StrictHostKeyChecking=no deploment_script.sh ec2-user@${pub_ip}:/home/ec2-user"
-                        sh "ssh ec2-user@${pub_ip} ./deployment_script.sh"
+                        sh "scp -o StrictHostKeyChecking=no compose ec2-user@${pub_ip}:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no deploment_script.sh ec2-user@${pub_ip}:/home/ec2-user"
+                        sh "ssh -o ec2-user@${pub_ip} ./deployment_script.sh"
                 }
                 }
             }
