@@ -34,9 +34,7 @@ pipeline {
                     dir('terraform') {
                         sh 'terraform init'
                         sh 'terraform apply -auto-approve'
-                    steps {
                         pub_ip = sh(script:'terraform output pub_ip', returnStdout: true).trim()
-                    }
                     }
                 }
             }
