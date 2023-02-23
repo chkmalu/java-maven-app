@@ -4,7 +4,6 @@ pipeline {
         maven 'maven'
         terraform 'terraform'
     }
-    withCredentials([usernamePassword(credentialsId: 'DockerAccess', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {}
 
     stages {
         stage('Test') {
@@ -21,8 +20,10 @@ pipeline {
                 script {
                     sh 'docker build -t jvmapp:4.0 .'
                     sh 'docker tag jvmapp:4.0 chikamalu/jvmapp:4.0'
-                    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                    sh 'docker push chikamalu/jvmapp:4.0'
+                    withCredentials([usernamePassword(credentialsId: 'DockerAccess', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                        sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
+                        sh 'docker push chikamalu/jvmapp:4.0'
+                    }
                 }
             }
         }
@@ -32,8 +33,8 @@ pipeline {
                 script{
                     dir('terraform') {
                         sh 'terraform init'
-                        sh 'terraform plan'
-                        // pub_ip = sh(script:'terraform output pub_ip', returnStdout: true).trim()
+                        sh 'terraform apply -auto-approve'
+                        pub_ip = sh(script:'terraform output pub_ip', returnStdout: true).trim()
                     }
                 }
             }
@@ -42,6 +43,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying app'
+                    echo ${pub_ip}
                     sleep(90, unit: 'SECONDS')
                     sshagent(['ec2-user-Key']) {
                         sh "scp StrictHostKeyChecking=no compose ec2-user@${pub_ip}:/home/ec2-user"
