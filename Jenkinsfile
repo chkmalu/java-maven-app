@@ -33,6 +33,7 @@ pipeline {
                 dir('terraform') {
                     sh 'terraform init'
                 }
+            }
         }
     }
 }
