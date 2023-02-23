@@ -27,6 +27,18 @@ pipeline {
                 }
             }
         }
+        stage('Provsion Infra.') {
+            steps {
+                environment {
+                access_key = "ACCESS_KEY_ID"
+                secret_key = "SECRET_KEY_ID"
+                }
+                echo 'Provisioning Infra.'
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying app'
