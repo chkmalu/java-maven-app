@@ -1,3 +1,13 @@
+terraform {
+  backend "s3" {
+    required_verison = ">=0.12"
+    bucket = "myapp-bucker"
+    key = "myapp/terraform.tfstate"
+    region = "us-east-1"
+    
+  }
+}
+
 provider "aws" {}
 
 #create vpc 
