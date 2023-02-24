@@ -51,7 +51,7 @@ pipeline {
                     sshagent(['server-ssh-key']) {
                         sh "scp -o StrictHostKeyChecking=no compose.yaml ec2-user@${pub_ip}:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no deployment_script.sh ec2-user@${pub_ip}:/home/ec2-user"
-                        sh "ssh -o ec2-user@${pub_ip} ./deployment_script.sh ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PWD}"
+                        sh "ssh -o ec2-user@${pub_ip} ./deployment_script.sh ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
                 }
                 }
             }
