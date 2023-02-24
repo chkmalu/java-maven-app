@@ -54,7 +54,7 @@ pipeline {
                     sshagent(['server-ssh-key']) {
                         sh "scp -o StrictHostKeyChecking=no compose.yaml ${ec2Instance}:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no deployment_script.sh ${ec2Instance}:/home/ec2-user"
-                        sh "ssh -o ${ec2Instance} ${shellCmd}"
+                        sh "ssh -o StrictHostKeyChecking ${ec2Instance} ${shellCmd}"
                 }
                 }
             }
