@@ -48,7 +48,7 @@ pipeline {
                     echo 'Deploying app'
                     echo "${pub_ip}"
                     sleep(time: 90, unit: 'SECONDS')
-                    def shellCmd = "bash ./deployment_script.sh ${IMAGE_NAME} ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
+                    def shellCmd = "bash ./deployment_script.sh ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
                     def ec2Instance = "ec2-user@${pub_ip}"
 
                     sshagent(['server-ssh-key']) {
