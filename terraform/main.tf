@@ -1,7 +1,7 @@
 terraform {
   required_verison = ">=0.12"
   backend "s3" {
-    bucket = "myapp-bucket"
+    bucket = "dev-appbucket"
     key = "myapp/terraform.tfstate"
     region = "us-east-1"
     
