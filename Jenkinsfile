@@ -48,10 +48,13 @@ pipeline {
                     echo 'Deploying app'
                     echo "${pub_ip}"
                     sleep(time: 90, unit: 'SECONDS')
+                    def shellCmd = "bash ./deployment_script.sh ${IMAGE_NAME} ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
+                    def ec2Instance = "ec2-user@${pub_ip}"
+
                     sshagent(['server-ssh-key']) {
-                        sh "scp -o StrictHostKeyChecking=no compose.yaml ec2-user@${pub_ip}:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no deployment_script.sh ec2-user@${pub_ip}:/home/ec2-user"
-                        sh "ssh -o ec2-user@${pub_ip} ./deployment_script.sh ${DOCKER_CREDS_USR} ${DOCKER_CREDS_PSW}"
+                        sh "scp -o StrictHostKeyChecking=no compose.yaml ${ec2Instance}:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no deployment_script.sh ${ec2Instance}:/home/ec2-user"
+                        sh "ssh -o ${ec2Instance} ${shellCmd}"
                 }
                 }
             }
