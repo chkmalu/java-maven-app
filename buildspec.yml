@@ -7,13 +7,16 @@ phases:
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
+      - echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin
   build:
     commands:
       - echo Build started on `date`
-      # - mvn install
+      - mvn clean package
   post_build:
     commands:
       - echo Build completed on `date`
+      - docker build -t jmvnapp:4.0
+      - docker tag jvmapp:4.0 chikamalu/jvmapp:4.0
 # artifacts:
 #   files:
 #     - target/messageUtil-1.0.jar
