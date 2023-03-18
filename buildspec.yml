@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
-      - echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin
+      - echo $PASSWORD | docker login -u $USERNAME --password-stdin
   build:
     commands:
       - echo Build started on `date`
