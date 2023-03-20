@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:latest
 
 EXPOSE 8080
 
