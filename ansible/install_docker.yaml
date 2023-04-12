@@ -52,25 +52,25 @@
     - name: Reset connection
       ansible.builtin.meta: reset_connection
 
-- name: Setup and run Compose-file
-  hosts: tag_Name_dev_instance
-  become: yes
-  become_user: ec2-user
-  gather_facts: false
-  vars_files:
-    - vars_dockercompose
-  tasks:
-    - name: Copy docker compose-file
-      ansible.builtin.copy:
-        src: "{{ file_path_local }}"
-        dest: "{{ file_path_remote }}"
-    - name: docker login
-      community.docker.docker_login: 
-        registry_url: "{{ registry_url }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        reauthorize: yes
-    - name: start containers
-      community.docker.docker_compose:
-        project_src: "{{ file_path_remote }}"
-        state: present #default state
+# - name: Setup and run Compose-file
+#   hosts: tag_Name_dev_instance
+#   become: yes
+#   become_user: ec2-user
+#   gather_facts: false
+#   vars_files:
+#     - vars_dockercompose
+#   tasks:
+#     - name: Copy docker compose-file
+#       ansible.builtin.copy:
+#         src: "{{ file_path_local }}"
+#         dest: "{{ file_path_remote }}"
+#     - name: docker login
+#       community.docker.docker_login: 
+#         registry_url: "{{ registry_url }}"
+#         username: "{{ username }}"
+#         password: "{{ password }}"
+#         reauthorize: yes
+#     - name: start containers
+#       community.docker.docker_compose:
+#         project_src: "{{ file_path_remote }}"
+#         state: present #default state
