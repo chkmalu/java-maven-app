@@ -11,7 +11,7 @@ pipeline {
                     sshagent(['server-ssh-key']) {
                         sh "scp -o StrictHostKeyChecking=no ansible/* ${ec2Instance}:/home/ubuntu"
                         withCredentials([sshUserPrivateKey(credentialsId: 'SSH-Client-Key', keyFileVariable: 'keyfile', usernameVariable: 'username')]) {
-                            sh "scp -o StrictHostKeyChecking=no ${keyfile} ${ec2Instance}:/home/ubuntu/"
+                            sh "scp -o StrictHostKeyChecking=no ${keyfile} ${ec2Instance}:/home/ubuntu/ssh-key.pem"
                         }
                 }
                 }
