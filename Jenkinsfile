@@ -8,7 +8,7 @@ pipeline {
                     echo 'Copying Ansible files'
                     def ec2Instance = "ubuntu@52.202.212.247"
 
-                    sshagent(['server-ssh-key']) {
+                    sshagent(['SSH-Client-Key']) {
                         sh "scp -o StrictHostKeyChecking=no ansible/* ${ec2Instance}:/home/ubuntu"
                         withCredentials([sshUserPrivateKey(credentialsId: 'SSH-Client-Key', keyFileVariable: 'keyfile', usernameVariable: 'username')]) {
                             "scp -o trictHostKeyChecking=no ${keyfile} ${ec2Instance}:/home/ubuntu/ssh-key.pem"
