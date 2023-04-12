@@ -64,12 +64,6 @@
       ansible.builtin.copy:
         src: "{{ file_path_local }}"
         dest: "{{ file_path_remote }}"
-    - name: docker login
-      community.docker.docker_login: 
-        registry_url: "{{ registry_url }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        reauthorize: yes
     - name: start containers
       community.docker.docker_compose:
         project_src: "{{ file_path_remote }}"
