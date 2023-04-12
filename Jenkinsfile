@@ -17,18 +17,5 @@ pipeline {
                 }
             }
         }
-        stage('Execute Ansible Playbook On Remote Server') {
-            steps {
-                script {
-                    echo 'Executing Ansible playbook'
-                    def command = "ansible-playbook install_docker.yaml"
-                    def ec2Instance = "ubuntu@52.202.212.247"
-
-                    sshagent(['server-ssh-key']) {
-                        sh "ssh -o StrictHostKeyChecking=no ${ec2Instance} ${command}"
-                    }
-                }
-            }
-        }
     }
 }
